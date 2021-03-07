@@ -33,21 +33,21 @@ class Unit:
         self.name = name
 
     def increase_health(self, plus_health):
-        if plus_health > 199:
+        if plus_health > 100:
             print("Unavailable to increase health.")
-            return None
+            self.health = 100
 
-        if self.health == 0:
+        elif self.health < 0:
             print(f"You have been returned to life. Congratulations!")
             self.health += plus_health
 
-        if self.health <= 90:
+        elif self.health < 100:
             print(f"You have healed at {plus_health} points.")
             self.health += plus_health
 
-        if self.health > 100:
-            tmp = self.health % 100
-            self.health -= tmp
+        elif self.health > 100:
+            print("You have reached the max value of health!")
+            self.health = 100
 
     def decrease_health(self, damage):
         if self.health >= 1:
